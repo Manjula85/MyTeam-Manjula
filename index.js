@@ -204,7 +204,10 @@ const internInput = [
         }
     ]
 
-    ).then (({name, id, email, officeNumber, github, role}) =>{
+const managerQuestions = function() {
+
+    inquirer.prompt(managerInput)
+    .then (({name, id, email, role}) =>{
         
         const teamMate = new Employee(name,id,email);
         teamMate.role = role;
@@ -222,7 +225,7 @@ const internInput = [
     });
 }
 
-managerInput();
+managerQuestions();
 //console.log('--------seperator--------');
 
 fs.writeFile('./dist/index.html', generatePage(name, github), err => {
