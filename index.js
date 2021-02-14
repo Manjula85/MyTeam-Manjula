@@ -1,8 +1,10 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
 const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 const intern = require('./lib/Intern');
+const generatePage = require('./src/generateHTML');
 
 inquirer.prompt([
     {
@@ -48,8 +50,21 @@ inquirer.prompt([
         type:'input',
         name:'officeNumber',
         message:"Enter your office number here please:",
-        validate: emailInput => {
-            if(emailInput){
+        validate: officeNumberInput => {
+            if(officeNumberInput){
+                return true;
+            } else {
+                console.log("Enter valid input");
+                return false;
+            }
+        }
+    },
+    {
+        type:'input',
+        name:'github',
+        message:"Enter your github account name here please:",
+        validate: githubInput => {
+            if(githubInput){
                 return true;
             } else {
                 console.log("Enter valid input");
@@ -64,7 +79,7 @@ inquirer.prompt([
         choices: ['Manager', 'Engineer', 'intern']
     }
 ]
-).then (({name, id, email, officeNumber, role}) =>{
+).then (({name, id, email, officeNumber, github, role}) =>{
     
     const teamMate = new Employee(name,id,email);
     teamMate.role = role;
@@ -72,11 +87,16 @@ inquirer.prompt([
     console.log(teamMate);
     console.log(teamMate.getRole());
 
-    console.log('--------above is employee--------');
+    console.log('--------seperator--------');
 
     const manager = new Manager(officeNumber);
     console.log(manager.getRole());
-    //role not assigned here yet
+
+    fs.writeFile('./dist/index.html', generatePage(name, github), err => {
+        if (err) throw err;
+        console.log('HTML created! Check out "./dis/index.html" to see the output!');
+    });
+
 }).catch(error => {
     console.log("Something went wrong here");
 });
