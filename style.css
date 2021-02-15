@@ -1,0 +1,47 @@
+
+h1, h2{
+    color:white;
+}
+
+h1{
+    text-align: center;
+    background-color: red;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+    margin: 0 15%;
+}
+
+.grid-container > div{
+    border: red 1px solid;
+    padding: 10px 10px;
+    text-align: center;
+}
+
+div{
+    color: black;
+}
+
+section{
+    margin-left: auto;
+    margin-right: auto;
+    height: 350px;
+    width: 200px;
+}
+
+table{
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+td{
+    border: 1px solid black;
+    padding: 1%;
+}

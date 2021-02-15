@@ -6,9 +6,10 @@ const Manager = require('./lib/Manager');
 const intern = require('./lib/Intern');
 const generatePage = require('./src/generateHTML');
 
-const outputs = [];
+//const outputs = [];
 
-const managerInput = [
+    inquirer
+        .prompt([
         {
             type:'input',
             name:'name',
@@ -67,8 +68,8 @@ const managerInput = [
             message:"Add the next team member",
             choices: ['Engineer', 'intern', 'Finish building my team']
         }
-    ];
-
+    ]
+/*
 const engineerInput = [
         {
             type:'input',
@@ -206,29 +207,32 @@ const internInput = [
 
 const managerQuestions = function() {
 
-    inquirer.prompt(managerInput)
-    .then (({name, id, email, role}) =>{
+    inquirer.prompt(managerInput)*/
+    ).then (({name, id, email, officeNumber, role}) =>{
         
         const teamMate = new Employee(name,id,email);
         teamMate.role = role;
 
         const manager = new Manager(officeNumber);
+        manager.role = 'Manager';
 
-        switch(role){
+        /*switch(role){
             case 0: console.log(' we have eng');
             case 1: console.log(' we have intern');
             case 2: console.log(' we are done!');
-        }
+        }*/
+
+        fs.writeFile('./dist/index.html', generatePage(name,id,email,officeNumber, manager.getRole()), err => {
+            if (err) throw new Error(err);
+            console.log('HTML created! Check out "./dis/index.html" to see the output!');
+        });
 
     }).catch(error => {
         console.log("Something went wrong here");
     });
-}
 
-managerQuestions();
-//console.log('--------seperator--------');
+//managerQuestions();
+//EngineerQuestions();
+//InternQuestions();
 
-fs.writeFile('./dist/index.html', generatePage(name, github), err => {
-    if (err) throw err;
-    console.log('HTML created! Check out "./dis/index.html" to see the output!');
-});
+
