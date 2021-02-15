@@ -1,3 +1,4 @@
+//to connect to the testing file
 const Employee = require('../lib/Employee.js');
 
 test('creates an employee object', () => {
@@ -11,18 +12,19 @@ test('creates an employee object', () => {
 test('gets employee\'s name', () => {
     const employee = new Employee('Dave',123,'test@gmail.com');
 
+    //Output is a string containing employee.name
     expect(employee.getName()).toEqual(expect.stringContaining(employee.name.toString()));
 });
 
 test('gets employee\'s id', () => {
     const employee = new Employee('Dave',123,'test@gmail.com');
-
+    //Output is a string containing employee.id
     expect(employee.getId()).toEqual(expect.stringContaining(employee.id.toString()));
 });
 
 test('gets employee\'s email', () => {
     const employee = new Employee('Dave',123,'test@gmail.com');
-
+    //Output is a string containing employee.email
     expect(employee.getEmail()).toEqual(expect.stringContaining(employee.email.toString()));
 });
 
