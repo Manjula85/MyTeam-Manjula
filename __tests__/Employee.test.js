@@ -33,12 +33,6 @@ test('get employee\'s role', () => {
 
     expect(employee.getRole()).toEqual(expect.any(String));
 });
-   
-    /*   
-    expect(employee.getRole()).toHaveProperty('manager');
-    expect(employee.getRole()).toHaveProperty('engineer');
-    expect(employee.getRole()).toHaveProperty('intern');
-    expect(employee.getRole()).toHaveProperty('employee');*/
 
 
 
