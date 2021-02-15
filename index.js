@@ -12,7 +12,7 @@ const generatePage = require('./src/generateHTML');
         {
             type:'input',
             name:'name',
-            message:"Enter Team mangaer's name here please:",
+            message:"Enter Team manager's name here please:",
             validate: nameInput => {
                 if(nameInput){
                     return true;
@@ -25,7 +25,7 @@ const generatePage = require('./src/generateHTML');
         {
             type:'input',
             name:'id',
-            message:"Enter Team mangaer's id here please:",
+            message:"Enter Team manager's id here please:",
             validate: idInput => {
                 if(idInput){
                     return true;
@@ -38,7 +38,7 @@ const generatePage = require('./src/generateHTML');
         {
             type:'input',
             name:'email',
-            message:"Enter Team mangaer's email address here please:",
+            message:"Enter Team manager's email address here please:",
             validate: emailInput => {
                 if(emailInput){
                     return true;
@@ -51,7 +51,7 @@ const generatePage = require('./src/generateHTML');
         {
             type:'input',
             name:'officeNumber',
-            message:"Enter Team mangaer's office number here please:",
+            message:"Enter Team manager's office number here please:",
             validate: officeNumberInput => {
                 if(officeNumberInput){
                     return true;
@@ -224,7 +224,7 @@ const managerQuestions = function() {
             case 2: console.log(' we are done!');
         }*/
 
-        //generate the html file
+        //generateclear the html file
         fs.writeFile('./dist/index.html', generatePage(name,id,email,officeNumber, manager.getRole()), err => {
             if (err) throw new Error(err);
             console.log('HTML created! Check out "./dis/index.html" to see the output!');
